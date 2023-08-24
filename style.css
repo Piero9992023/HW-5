@@ -13,10 +13,10 @@ body {
     padding: 10px;
   }
   
-  .jumbotron {
+  .header {
     text-align: center;
     background-color: transparent;
-    color: rgb(105, 105, 105);
+    color: gray;
     border-radius: 0;
     border-bottom: 10px solid black;
   }
@@ -71,7 +71,7 @@ body {
   }
   
   .time {
-    background-color:  #ff6961;
+    background-color:  blue;
     border-radius: 30px;
     margin: 0 auto;
     width: 50%;

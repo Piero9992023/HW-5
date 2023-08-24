@@ -1,6 +1,6 @@
 /*Put date, day, and year */
 var today = moment().format("dddd, MMMM Do YYYY ");
-
+/*Sets the time and date displaying date/time similar to day.js */
 var now = moment().format("H A");
 
 // current day
@@ -8,8 +8,8 @@ var now = moment().format("H A");
 $("#currentDay").text(today);
 
 
-/* planWorkday entries for each hour of the workday */
-var planWorkday = [
+/* planWorkDay entries for each hour of the workday */
+var planWorkDay = [
     { time: "9 AM", 
         event: "" },
     { time: "10 AM", 
@@ -33,14 +33,14 @@ var planWorkday = [
 /* Local Storage getting so that it could save user content */
 var workEvents = JSON.parse(localStorage.getItem("workDay"));
 if (workEvents) {
-  planWorkday = workEvents;
+  planWorkDay = workEvents;
 }
 
 /* Current Day */
 $("#currentDay").text(today);
 
 /* Creating rows with bootstrap */
-planWorkday.forEach(function(timeBlock, index) {
+planWorkDay.forEach(function(timeBlock, index) {
 	var timeLabel = timeBlock.time;
 	var blockColor = colorRow(timeLabel);
 	var row =
@@ -72,7 +72,7 @@ function colorRow(time) {
 	}
 }
 
-/* Save Events */
+/* Save Events for the user's schedule */
 $(".saveBtn").on("click", function() {
 	var blockID = parseInt(
 		$(this)
@@ -85,8 +85,8 @@ $(".saveBtn").on("click", function() {
 			.siblings("textarea")
 			.val()
 	);
-	planWorkday[blockID].event = userEntry;
+	planWorkDay[blockID].event = userEntry;
 
 	/* Set local storage */
-	localStorage.setItem("workDay", JSON.stringify(planWorkday));
+	localStorage.setItem("workDay", JSON.stringify(planWorkDay));
 });
